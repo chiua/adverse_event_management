@@ -1,0 +1,43 @@
+<!-- Bootstrap Navbar -->
+<nav class="navbar navbar-light bg-faded">
+  <div class="container">
+    <a class="navbar-brand" href="#">Adverse Event Management</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div [style.margin-top.px]="10" class="row">
+    <div *ngIf="message" class="alert alert-success" role="alert">
+      {{message}}
+    </div>
+    <h3>Events</h3>
+   <div *ngIf="totalItems >0">
+    <ng-pagination [totalItems]="totalItems" boundaryText="true" [(ngModel)]="currentPage" [maxSize]="maxSize" (pageChanged)="pageChanged($event)"
+    previous-text="previous" next-text="next" first-text="First" last-text="Last"></ng-pagination>
+    </div> 
+    <!-- Bootstrap Panel -->
+    <!-- This looks ugly right now but coulding find a while loop only ngfor, trying to show all nested objects 
+         Maybe i can clean this up, but no time right now -->
+    <div [style.margin-right.px]="10" class="panel panel-default" *ngFor="let event of events">
+      <div class="panel-body">
+        <div *ngFor="let key of keys(event)">{{key}} : {{event[key]}}
+          <div  *ngIf='isObject(event[key])'>
+            <div *ngFor="let objectkey of keys(event[key])">
+              {{objectkey}} : {{event[key][objectkey]}} 
+              <div  *ngIf='isObject(event[key][objectkey])'>
+                <div *ngFor="let objectkey2 of keys(event[key][objectkey])">
+                  <div *ngIf='isObject(event[key][objectkey][objectkey2])'>
+                    <div *ngFor="let objectkey3 of keys(event[key][objectkey][objectkey2])">
+                      {{objectkey3}} : {{event[key][objectkey][objectkey2][objectkey3]}} 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type='button' (click)="deleteEvent(event._id)" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
