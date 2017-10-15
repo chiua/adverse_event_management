@@ -15,8 +15,8 @@ services:
     build: express-server
     ports:
       - "3000"
-      - VIRTUAL_HOST=adverse-api.andrew-chiu.com
-      - LETSENCRYPT_HOST=adverse-api.andrew-chiu.com
+      - VIRTUAL_HOST=adverseapi.andrew-chiu.com
+      - LETSENCRYPT_HOST=adverseapi.andrew-chiu.com
       - LETSENCRYPT_HOST=andrewchiu04@gmail.com
     network_mode: "bridge"
     links:
