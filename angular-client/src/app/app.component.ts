@@ -14,7 +14,7 @@ import 'rxjs/add/operator/catch';
 export class AppComponent {
   public title = 'app works!';
 
-  private API = 'http://localhost:3000';
+  private API = 'http://adverse.api.andrew-chiu.com';
 
   public events: any[] = [];
 
@@ -40,11 +40,11 @@ export class AppComponent {
 
   public setCurrentPage(pageNo:number):void {
     console.log('setpage', pageNo);
-    this.currentPage = pageNo;    
+    this.currentPage = pageNo;
   };
 
   public pageChanged(event:any):void {
-  //this method will trigger every page click 
+  //this method will trigger every page click
   this.getEvents(this.currentPage);
   };
 
