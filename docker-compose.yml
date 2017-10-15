@@ -3,22 +3,24 @@ version: '2'
 services:
   angular:
     build: angular-client
+    environment:
+      - VIRTUAL_HOST=adverse.andrew-chiu.com
     ports:
-      - "4200:4200"
+      - "4200"
 
   express:
     build: express-server
     ports:
-      - "3000:3000"
+      - "3000"
     links:
       - database
 
   database:
     image: mongo
     ports:
-      - "27017:27017"
+      - "27017"
 
   mongo-seed:
     build: ./mongo-seed
-    links: 
+    links:
       - database
