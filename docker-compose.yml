@@ -5,6 +5,8 @@ services:
     build: angular-client
     environment:
       - VIRTUAL_HOST=adverse.andrew-chiu.com
+      - LETSENCRYPT_HOST=adverse.andrew-chiu.com
+      - LETSENCRYPT_HOST=andrewchiu04@gmail.com
     ports:
       - "4200"
 
