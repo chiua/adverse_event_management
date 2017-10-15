@@ -32,7 +32,7 @@ eventSchema.plugin(mongoosePaginate);
 const Event = mongoose.model('Event', eventSchema);
 
 router.get('/', (req, res) => {
-  res.send('Adverse Event Management');
+  res.send('Adverse Event Management 2');
 });
 
 router.route('/events/page/:page')
@@ -53,7 +53,7 @@ router.route('/events/page/:page')
           res.send(err);
       }
       res.status(201).json({ message: 'event created!'});
-    }) 
+    })
 
   });
 
@@ -71,7 +71,7 @@ router.route('/events/:event_id')
 
       event = req.body.event;
       event.save(function(err){
-        if (err) 
+        if (err)
           res.send(err);
         res.json({ message: 'event updated'});
       })
@@ -79,7 +79,7 @@ router.route('/events/:event_id')
   })
   .delete((req,res) => {
     Event.remove({
-      _id: req.params.event_id   
+      _id: req.params.event_id
     }, function(err, event){
       if (err) res.status(500).send(err);
       console.log(event);
