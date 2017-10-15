@@ -25,6 +25,7 @@ services:
 
   database:
     image: mongo
+    network_mode: "bridge"
     ports:
       - "27017"
 
